@@ -9,3 +9,5 @@ This example deploys Datadog's [Docker agent](https://docs.datadoghq.com/agent/d
 The URL will look like `datadog-agent-lkyz` with APM available on TCP port `8126` and DogStatsD on UDP port `8125`.
 
 > You will need to configure your Datadog API key by setting the `DD_API_KEY` environment variable to your private service.
+
+Errors of the form `"Unable to detect the kubelet URL automatically: impossible to reach Kubelet with host:` can be safely ignored. The kubelet is part of the Render control plane and inaccessible to user workloads. The DataDog Agent will still be able to capture and send metrics from your applications.
