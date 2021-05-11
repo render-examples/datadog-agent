@@ -1,5 +1,8 @@
 FROM datadog/agent:7
 
+# disable all Kubernetes checks (they don't work on Render)
+RUN rm -rf /etc/datadog-agent/conf.d/kube*
+
 ENV NON_LOCAL_TRAFFIC=true
 ENV DD_LOGS_STDOUT=yes
 
