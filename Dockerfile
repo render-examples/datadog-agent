@@ -1,7 +1,9 @@
 FROM datadog/agent:7
 
-# disable all Kubernetes checks (they don't work on Render)
-RUN rm -rf /etc/datadog-agent/conf.d/kube*
+# disable autoconfigured checks; DD container checks
+# do not work as-is on Render since there's no access
+# to Kubelet/kube-state-metrics.
+ENV DD_AUTOCONFIG_FROM_ENVIRONMENT=false
 
 ENV NON_LOCAL_TRAFFIC=true
 ENV DD_LOGS_STDOUT=yes
