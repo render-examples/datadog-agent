@@ -9,3 +9,7 @@ This example deploys Datadog's [Docker agent](https://docs.datadoghq.com/agent/d
 The URL will look like `datadog-agent-lkyz` with APM available on TCP port `8126` and DogStatsD on UDP port `8125`.
 
 > You will need to configure your Datadog API key by setting the `DD_API_KEY` environment variable to your private service.
+
+## Config Files
+
+Config files are baked into the docker image. To add a new config, add the new file into `configs/` matching the datadog file format (e.g. `gunicorn.d/conf.yaml` for gunicorn). Then in `Dockerfile` copy the file into the correct Datadog config file path.
