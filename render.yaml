@@ -1,0 +1,8 @@
+services:
+  - type: pserv
+    name: datadog-agent
+    runtime: docker
+    plan: starter
+    envVars:
+      - key: DD_API_KEY
+        sync: false
